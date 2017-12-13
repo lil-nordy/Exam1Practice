@@ -8,17 +8,17 @@ These problems illustrate concepts that previous problems have not emphasized:
   -- animation (Problem 0c)
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Nathaniel Nordquist.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_problem0a()
+    # run_test_problem0a()
     run_test_problem0b()
-    run_test_problem0c()
+    # run_test_problem0c()
 
 
 def is_prime(n):
@@ -146,7 +146,7 @@ def problem0a(n):
            since (2 + 4 + 6) is 12, which is NOT odd.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
@@ -163,6 +163,11 @@ def problem0a(n):
     #        Simply try a few examples to convince yourself of this.
     #        ASK FOR HELP if you do not understand this hint.
     # ------------------------------------------------------------------
+    digit_sum = sum_of_digits(n)
+    if digit_sum % 2 != 0:
+        return True
+    else:
+        return False
 
 
 def run_test_problem0b():
