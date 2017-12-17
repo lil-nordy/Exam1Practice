@@ -17,8 +17,9 @@ import rosegraphics as rg
 def main():
     """ Calls the   TEST   functions in this module. """
     # run_test_problem0a()
-    run_test_problem0b()
-    # run_test_problem0c()
+    # run_test_problem0b()
+    # test_nate_prime_test_quick_not_rigorous()
+    run_test_problem0c()
 
 
 def is_prime(n):
@@ -206,6 +207,26 @@ def run_test_problem0b():
     print('       actual:  ', answer)
 
 
+def test_nate_prime_test_quick_not_rigorous():
+    print('-------------------------------')
+    print('Testing Nate\'s Quick Prime test')
+    print('-------------------------------')
+    expected = True
+    answer = nate_prime_test_quick_not_rigorous(7)
+    print('expected:', expected)
+    print('actual:  ', answer)
+
+    expected = True
+    answer = nate_prime_test_quick_not_rigorous(5)
+    print('expected:', expected)
+    print('actual:  ', answer)
+
+    expected = False
+    answer = nate_prime_test_quick_not_rigorous(8)
+    print('expected:', expected)
+    print('actual:  ', answer)
+
+
 def problem0b(n):
     """
     What comes in:  An integer n >= 2.
@@ -223,7 +244,7 @@ def problem0b(n):
            since there are 46 primes between 2 and 200.
      """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
@@ -232,6 +253,49 @@ def problem0b(n):
     #    **  use (call) the   is_prime   function that is DEFINED ABOVE.
     ####################################################################
     # ------------------------------------------------------------------
+    count = 0
+    if n == 2:
+        return 1
+    elif n != 2:
+        for k in range(n+1):
+            if is_prime(k + 2) == True:
+             count += 1
+    return count
+# My clever peer Aman Bajaj's much more elegant solution:
+# It divides
+# total = 0
+#     for i in range(n):
+#         factors = 0
+#         for k in range(i):
+#             if (i+1)%(k+1) == 0:
+#                 factors += 1
+#         if factors == 1:
+#             total += 1
+#     return total
+# -----Inkling -----
+# Here I had a similar thought to Aman, but instead of checking *each number* *up to* n for primality, I only checked
+#  n. Again, I re-invented code that already existed instead of just reading it the first time. Dang.
+# So now, I'll leave this chicken-scratch here as a lesson-reminder and rewrite my own primality test below it,
+# and test it...as a separate function.
+#     count = 0
+#     factors = 0
+#     for k in range(n):
+#         if (n+1) % (k+1) == 0:
+#             factors += 1
+#     if factors == 1:
+#         count += 1
+#     return count
+
+
+def nate_prime_test_quick_not_rigorous(n):
+    factors = 0
+    for k in range(n):
+        if n % (k+1) == 0:
+            factors += 1
+    if factors == 2:
+        return True
+    else:
+        return False
 
 
 def run_test_problem0c():
@@ -299,7 +363,15 @@ def problem0c(circle, n, window):
     #   renders with a half-second pause after rendering.
     ####################################################################
     # ------------------------------------------------------------------
+    # > Takes the passed in circle *circle* and draws n of them
+    for k in range(n):
+        circle_center = rg.Point(circle.center.x + (k*2*circle.radius), circle.center.y)
+        screen_circle = rg.Circle(circle_center, circle.radius)
+        if k == 0:
+            screen_circle.fill_color = circle.fill_color
+        screen_circle.attach_to(window)
 
+        window.render(0.5)
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
