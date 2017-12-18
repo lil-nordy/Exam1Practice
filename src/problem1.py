@@ -2,8 +2,8 @@
 PRACTICE Test 1, problem 1.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Nathaniel Nordquist aka Nate.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -87,7 +87,13 @@ def sum_of_digits(number):
         number = number // 10
 
     return digit_sum
+# > Works from the right to the left
+# > First: gets the remainder base 10: so 1111 and 1001 evaluate to 1, but 9999 and 9009 evaluate to 9. Every time
+# this runs, that digit is added to the running total (they are added to each other.)
+# > Second: mutates the number passed in using floor division by flooring the remainding decimal (less positive -
+# towards zero if positive, towards negative infinity if negative.
 
+# TODO: copy this to problem 0, upload as a gist note.
 
 def run_test_problem1a():
     """ Tests the   problem1a   function. """

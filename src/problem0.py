@@ -16,9 +16,9 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    # run_test_problem0a()
-    # run_test_problem0b()
-    # test_nate_prime_test_quick_not_rigorous()
+    run_test_problem0a()
+    run_test_problem0b()
+    test_nate_prime_test_quick_not_rigorous()
     run_test_problem0c()
 
 
@@ -76,6 +76,11 @@ def sum_of_digits(number):
         number = number // 10
 
     return digit_sum
+# > Works from the right to the left
+# > First: gets the remainder base 10: so 1111 and 1001 evaluate to 1, but 9999 and 9009 evaluate to 9. Every time
+# this runs, that digit is added to the running total (they are added to each other.)
+# > Second: mutates the number passed in using floor division by flooring the remainding decimal (less positive -
+# towards zero if positive, towards negative infinity if negative.
 
 
 def run_test_problem0a():
@@ -256,10 +261,10 @@ def problem0b(n):
     count = 0
     if n == 2:
         return 1
-    elif n != 2:
+    else:
         for k in range(n+1):
             if is_prime(k + 2) == True:
-             count += 1
+                count += 1
     return count
 # My clever peer Aman Bajaj's much more elegant solution:
 # It divides
@@ -355,7 +360,7 @@ def problem0c(circle, n, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
@@ -376,4 +381,6 @@ def problem0c(circle, n, window):
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
+
+
 main()
