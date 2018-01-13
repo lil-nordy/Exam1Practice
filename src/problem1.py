@@ -25,12 +25,14 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 #    on it, in class or via Piazza.
 ########################################################################
 
+import math
+
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_problem1a()
+    # run_test_problem1a()
     run_test_problem1b()
-    run_test_problem1c()
+    # run_test_problem1c()
 
 
 def is_prime(n):
@@ -98,7 +100,7 @@ def sum_of_digits(number):
 def run_test_problem1a():
     """ Tests the   problem1a   function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  problem1a  function defined below.
     #   Include at least **   4   ** tests (we wrote two for you).
     # ------------------------------------------------------------------
@@ -131,6 +133,17 @@ def run_test_problem1a():
     # Below this comment, add 2 more test cases of your own choosing.
     # ------------------------------------------------------------------
 
+    # Test 3
+    expected = .06332  # wolfram alpha
+    answer = problem1a(2, 3)
+    print('Test 3 expected value:', expected, '(thereabouts)')
+    print('       actual value:  ', answer)
+
+    # Test 4
+    expected = 1.135
+    answer = problem1a(1, -2)
+    print('Test 4 expected value:', expected)
+    print('       actual value:  ', answer, '(or in that ball-park)')
 
 def problem1a(m, n):
     """
@@ -150,15 +163,19 @@ def problem1a(m, n):
       -- If m is 30 and n is 100, the correct answer is about 1.278.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 minutes.
+    # > Finished in 5! Because you have already taken the test. It's amazing how much practice helps. You idiot.
     # ------------------------------------------------------------------
-
+    sum_total = 0
+    for k in range(n**2 - m**2 + 1):
+        sum_total += math.sin(k + m**2)
+    return sum_total
 
 def run_test_problem1b():
     """ Tests the   problem1b   function. """
@@ -176,6 +193,37 @@ def run_test_problem1b():
     print('--------------------------------------------------')
     print('Testing the   problem1b   function:')
     print('--------------------------------------------------')
+
+
+    # Test 1
+    expected = 5
+    answer = problem1b(3, 5)
+    print('Test 1 expected value:', expected)
+    print('Test 1 actual value:', answer)
+
+    # Test 2
+    expected = 1
+    answer = problem1b(2, 1)
+    print('Test 2 expected value:', expected)
+    print('Test 2 actual value:', answer)
+
+    # Test 2
+    expected = 1
+    answer = problem1b(2, 1)
+    print('Test 2 expected value:', expected)
+    print('Test 2 actual value:  ', answer)
+
+    # Test 3
+    expected = 44
+    answer = problem1b(5, 40)
+    print('Test 3 expected value:', expected)
+    print('Test 3 actual value: ', answer)
+
+    # Test 4
+    expected = 4
+    answer = problem1b(10, 20)
+    print('Test 2 expected value:', expected)
+    print('Test 2 actual value:  ', answer)
 
 
 def problem1b(m, f):
@@ -208,6 +256,11 @@ def problem1b(m, f):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
+    count = 0
+    for k in range(m - f + 1):
+        if is_prime(k + f) is True:
+            count += 1
+    return count
 
 
 def run_test_problem1c():
