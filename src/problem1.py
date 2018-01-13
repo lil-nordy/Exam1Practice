@@ -30,8 +30,8 @@ import math
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    # run_test_problem1a()
-    run_test_problem1b()
+    run_test_problem1a()
+    # run_test_problem1b()
     # run_test_problem1c()
 
 

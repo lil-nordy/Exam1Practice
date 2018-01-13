@@ -16,10 +16,10 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_problem0a()
+    # run_test_problem0a()
     run_test_problem0b()
-    test_nate_prime_test_quick_not_rigorous()
-    run_test_problem0c()
+    # test_nate_prime_test_quick_not_rigorous()
+    # run_test_problem0c()
 
 
 def is_prime(n):
@@ -266,7 +266,7 @@ def problem0b(n):
             if is_prime(k + 2) == True:
                 count += 1
     return count
-# My clever peer Aman Bajaj's much more elegant solution:
+# My clever friend Aman Bajaj's much more elegant solution:
 # It divides
 # total = 0
 #     for i in range(n):
