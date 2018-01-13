@@ -397,7 +397,7 @@ def problem0c(circle, n, window):
     # > Takes the passed in circle "circle" and draws n of them
     # > This code is very illustrative of the fact that argument names do pass in objects with names and attributes:
     # circle.radius (is the value of an instrance variable of an rg.Circle object named circle) that is used as an
-    # argument for an rg.Circle object named screen_circle defined **in** the function. 
+    # argument for an rg.Circle object named screen_circle defined **in** the function.
     for k in range(n):
         circle_center = rg.Point(circle.center.x + (k*2*circle.radius), circle.center.y)
         screen_circle = rg.Circle(circle_center, circle.radius)
