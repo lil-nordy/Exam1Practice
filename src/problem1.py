@@ -30,8 +30,9 @@ import math
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_problem1a()
-    # run_test_problem1b()
+    run_test_is_prime()
+    # run_test_problem1a()
+    run_test_problem1b()
     # run_test_problem1c()
 
 
@@ -62,6 +63,11 @@ def is_prime(n):
     # ------------------------------------------------------------------
 
 
+def run_test_is_prime():
+    print(is_prime(3))
+    print(is_prime(2))
+    print(is_prime(1))
+
 def sum_of_digits(number):
     """
     What comes in:  An integer.
@@ -89,6 +95,7 @@ def sum_of_digits(number):
         number = number // 10
 
     return digit_sum
+# Explaination walk through below. Created equivalent code named appropriately in the appropriate folder.
 # > Works from the right to the left
 # > First: gets the remainder base 10: so 1111 and 1001 evaluate to 1, but 9999 and 9009 evaluate to 9. Every time
 # this runs, that digit is added to the running total (they are added to each other.)
@@ -96,6 +103,7 @@ def sum_of_digits(number):
 # towards zero if positive, towards negative infinity if negative.
 
 # TODO: copy this to problem 0, upload as a gist note.
+
 
 def run_test_problem1a():
     """ Tests the   problem1a   function. """
@@ -177,10 +185,11 @@ def problem1a(m, n):
         sum_total += math.sin(k + m**2)
     return sum_total
 
+
 def run_test_problem1b():
     """ Tests the   problem1b   function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # DONE: 4. Implement this TEST function.
     #   It TESTS the  problem1b  function defined below.
     #   Include at least **   4   ** tests.
     # ------------------------------------------------------------------
@@ -207,11 +216,6 @@ def run_test_problem1b():
     print('Test 2 expected value:', expected)
     print('Test 2 actual value:', answer)
 
-    # Test 2
-    expected = 1
-    answer = problem1b(2, 1)
-    print('Test 2 expected value:', expected)
-    print('Test 2 actual value:  ', answer)
 
     # Test 3
     expected = 44
@@ -220,10 +224,12 @@ def run_test_problem1b():
     print('Test 3 actual value: ', answer)
 
     # Test 4
-    expected = 4
+    expected = 42
+    # Wolfram alpha: how many primes between 10 and 200?
+    # pi(200) - pi(100)
     answer = problem1b(10, 20)
-    print('Test 2 expected value:', expected)
-    print('Test 2 actual value:  ', answer)
+    print('Test 4 expected value:', expected)
+    print('Test 4 actual value:  ', answer)
 
 
 def problem1b(m, f):
@@ -243,7 +249,7 @@ def problem1b(m, f):
            since there are 44 primes between 5 and 200.
      """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     ####################################################################
@@ -257,8 +263,8 @@ def problem1b(m, f):
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
     count = 0
-    for k in range(m - f + 1):
-        if is_prime(k + f) is True:
+    for k in range(f * m - m + 1):
+        if is_prime(k+m) == True:
             count += 1
     return count
 
