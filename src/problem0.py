@@ -17,9 +17,9 @@ import rosegraphics as rg
 def main():
     """ Calls the   TEST   functions in this module. """
     # run_test_problem0a()
-    run_test_problem0b()
-    # test_nate_prime_test_quick_not_rigorous()
-    # run_test_problem0c()
+    # run_test_problem0b()
+    # run_test_nate_problem0b()
+    run_test_problem0c()
 
 
 def is_prime(n):
@@ -212,26 +212,6 @@ def run_test_problem0b():
     print('       actual:  ', answer)
 
 
-def test_nate_prime_test_quick_not_rigorous():
-    print('-------------------------------')
-    print('Testing Nate\'s Quick Prime test')
-    print('-------------------------------')
-    expected = True
-    answer = nate_prime_test_quick_not_rigorous(7)
-    print('expected:', expected)
-    print('actual:  ', answer)
-
-    expected = True
-    answer = nate_prime_test_quick_not_rigorous(5)
-    print('expected:', expected)
-    print('actual:  ', answer)
-
-    expected = False
-    answer = nate_prime_test_quick_not_rigorous(8)
-    print('expected:', expected)
-    print('actual:  ', answer)
-
-
 def problem0b(n):
     """
     What comes in:  An integer n >= 2.
@@ -261,11 +241,14 @@ def problem0b(n):
     count = 0
     if n == 2:
         return 1
+    # according to the specification (and mathematical convention of the special definitive case)
     else:
         for k in range(n+1):
             if is_prime(k + 2) == True:
                 count += 1
     return count
+# ---------------------------------
+# Inkling & Aman's Cleverness below:
 # My clever friend Aman Bajaj's much more elegant solution:
 # It divides
 # total = 0
@@ -292,7 +275,50 @@ def problem0b(n):
 #     return count
 
 
-def nate_prime_test_quick_not_rigorous(n):
+def run_test_nate_problem0b():
+    print()
+    print('--------------------------------------------------')
+    print('Testing Nate\'s problem0b alternative solution:')
+    print('--------------------------------------------------')
+
+    # Test 1:
+    expected = 6
+    answer = problem0b(13)
+    print()
+    print('Test 1 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 2:
+    expected = 1
+    answer = problem0b(2)
+    print()
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = 46
+    answer = problem0b(200)
+    print()
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 4:
+    expected = 168
+    answer = problem0b(997)
+    print()
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
+
+
+def nate_problem1b(number):
+    count = 0
+    for k in range(number):
+        if nate_quick_prime_test(k+2) == True:
+            count += 1
+    return count
+
+
+def nate_quick_prime_test(n):
     factors = 0
     for k in range(n):
         if n % (k+1) == 0:
@@ -368,7 +394,10 @@ def problem0c(circle, n, window):
     #   renders with a half-second pause after rendering.
     ####################################################################
     # ------------------------------------------------------------------
-    # > Takes the passed in circle *circle* and draws n of them
+    # > Takes the passed in circle "circle" and draws n of them
+    # > This code is very illustrative of the fact that argument names do pass in objects with names and attributes:
+    # circle.radius (is the value of an instrance variable of an rg.Circle object named circle) that is used as an
+    # argument for an rg.Circle object named screen_circle defined **in** the function. 
     for k in range(n):
         circle_center = rg.Point(circle.center.x + (k*2*circle.radius), circle.center.y)
         screen_circle = rg.Circle(circle_center, circle.radius)
