@@ -30,10 +30,10 @@ import math
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_is_prime()
+    # run_test_is_prime()
     # run_test_problem1a()
-    run_test_problem1b()
-    # run_test_problem1c()
+    # run_test_problem1b()
+    run_test_problem1c()
 
 
 def is_prime(n):
@@ -153,6 +153,7 @@ def run_test_problem1a():
     print('Test 4 expected value:', expected)
     print('       actual value:  ', answer, '(or in that ball-park)')
 
+
 def problem1a(m, n):
     """
     What comes in:  Integers m and n with abs(m) <= abs(n).
@@ -262,7 +263,12 @@ def problem1b(m, f):
     # ------------------------------------------------------------------
     count = 0
     for k in range(f * m - m + 1):
-        if is_prime(k+m) == True:
+    # comparison with a Boolean literal. The If statement is either going to be true or false implicitly. You
+    #  don't need to compare itself with either true or false. True is true, false is false. If True is
+    # false, the expression in the body of the if statement won't run.
+        # if is_prime(k+m) == True:
+            # count += 1
+        if is_prime(k+m):
             count += 1
     return count
 
@@ -349,7 +355,7 @@ def problem1c(n):
            and the sum of the digits in 223092870 is 33.
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
@@ -364,6 +370,34 @@ def problem1c(n):
     #    TIME ESTIMATE:   15 to 20 minutes.
     # ------------------------------------------------------------------
 
+    product = 1
+    for k in range(n+1):
+        if k >= 2:
+            if is_prime(k):
+                product *= k
+    return sum_of_digits(product)
+
+    # Solution 2: Viable!
+    # list_of_primes = []
+    # product = 1
+    # for k in range(n - 2):
+    #     if is_prime(k + 2):  # == True is implied...
+    #         list_of_primes += [k + 2]
+    # for k in range(len(list_of_primes)):
+    #     product *= list_of_primes[k]
+    #
+    # return sum_of_digits(product)
+
+    # Failed Attempt #1:
+    # list_of_primes = []
+    # product = 1
+    # for k in range(n - 2):
+    #     if is_prime(k + 2): # == True is implied...
+    #         list_of_primes += [k + 2]
+    # for k in range(len(list_of_primes)):
+    #     product *= list_of_primes[k]
+    #
+    # return sum_of_digits(product)
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
