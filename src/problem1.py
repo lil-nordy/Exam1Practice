@@ -203,7 +203,6 @@ def run_test_problem1b():
     print('Testing the   problem1b   function:')
     print('--------------------------------------------------')
 
-
     # Test 1
     expected = 5
     answer = problem1b(3, 5)
@@ -215,7 +214,6 @@ def run_test_problem1b():
     answer = problem1b(2, 1)
     print('Test 2 expected value:', expected)
     print('Test 2 actual value:', answer)
-
 
     # Test 3
     expected = 44
