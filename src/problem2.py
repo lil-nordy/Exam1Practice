@@ -30,8 +30,8 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_problem2a()
-    # run_test_problem2b()
+    # run_test_problem2a()
+    run_test_problem2b()
 
 
 def run_test_problem2a():
@@ -116,6 +116,17 @@ def problem2a(circle, rectangle, window):
     window.render()
     window.continue_on_mouse_click()
 
+    # line = rg.Line(rectangle.corner_2, rectangle.corner_1)
+    line = rg.Line(rectangle.get_upper_right_corner(), rectangle.get_lower_left_corner())
+    line.arrow = 'last'
+    line.attach_to(window)
+    window.render()
+
+    window.continue_on_mouse_click()
+
+    circle.fill_color = rectangle.outline_color
+    window.render()
+
 
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
@@ -179,7 +190,7 @@ def problem2b(rect, n, delta, win):
       :type win:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -187,7 +198,21 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
+    rect.attach_to(win)
 
+    for k in range(n - 1):
+        rect.attach_to(win)
+        corner1 = rg.Point(rect.get_upper_left_corner().x - delta, rect.get_upper_left_corner().y - delta)
+        corner2 = rg.Point(rect.get_lower_right_corner().x + delta, rect.get_lower_right_corner().y + delta)
+        # this works because each time the loop iterates, the rectangle's get_corner method of the Rectangle shape
+        # point class...cntrl + click...
+        corner3_recognize_the_equivalency_of_the_get_lower_method = rg.Point(rect.corner_1.x + delta)
+        # this also mutates the .x coordinate. The PEP8 error is self-pedagogical or something.
+
+        rect = rg.Rectangle(corner1, corner2)
+        rect.attach_to(win)
+
+    win.render()
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
